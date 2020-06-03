@@ -3,17 +3,20 @@ package exercice2;
 public class MainExo2 {
 
 	public static void main(String[] args) {
-		Graphe graph = new Graphe(7);
-		graph.ajouterChemin(0, 1, 2);
-		graph.ajouterChemin(0, 4, 1);
-//		graph.ajouterChemin(1, 2, 7);
-		graph.ajouterChemin(1, 3, 2);
-		graph.ajouterChemin(1, 4, 5);
-//		graph.ajouterChemin(2, 3, 3);
-		graph.ajouterChemin(3, 4, 6);
-//		graph.ajouterChemin(4, 5, 10);
-		graph.ajouterChemin(5, 6, 2);
-		System.out.println(graph.toString());
+		Graphe graphe = new Graphe(7);
+		graphe.ajouterChemin(0,1,2);
+		graphe.ajouterChemin(0,6,5);
+		graphe.ajouterChemin(1,6,15);
+		graphe.ajouterChemin(6,2,5);
+		graphe.ajouterChemin(6,3,7);
+		graphe.ajouterChemin(1,4,3);
+		graphe.ajouterChemin(1,3,10);
+		graphe.ajouterChemin(2,3,7);
+		graphe.ajouterChemin(2,4,10);
+		graphe.ajouterChemin(2,5,12);
+		graphe.ajouterChemin(5,4,11);
+		graphe.ajouterChemin(3,4,1);
+		System.out.println(graphe);
 //		System.out.println(Parcours.estConnexe(graph));
 	}
 
