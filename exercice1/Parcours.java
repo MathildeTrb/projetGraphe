@@ -6,21 +6,23 @@ public class Parcours {
 
 	public static String estConnexe(Graphe graph) {
 
-		int sommet = graph.sommet;
+		int sommet = graph.getNbSommet();
 		int nbComposantes = 1;
 		int source = 0;
+		int j = 0;
 		boolean end = false;
 		
-		LinkedList<Integer> adjacents[] = graph.graphe;
+		LinkedList<Integer> adjacents[] = graph.getGraphe();
 		boolean[] visites = new boolean[sommet];
 		
 		while (!end) {
 			parcoursProfondeur(source, adjacents, visites);
 
 			//permet de compter le nombre de composantes connexes
-			for (int i = 0; i < visites.length; i++) {
+			for (int i = j; i < visites.length; i++) {
 				//si un sommet n'est pas marqué alors il y a plusieurs compoasntes connexes
 				if (!visites[i]) {
+					j = i;
 					nbComposantes++;
 					source = i;	//recupère le sommet qui ne fait pas parti d'une composante connexe
 					end = false;

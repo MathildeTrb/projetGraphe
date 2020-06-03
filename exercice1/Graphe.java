@@ -4,14 +4,14 @@ import java.util.LinkedList;
 
 public class Graphe {
 
-	int sommet;
-	LinkedList<Integer> graphe[];
+	private int nbSommet;
+	private LinkedList<Integer> graphe[];
 
-	public Graphe(int sommet) {
-		this.sommet = sommet;
-		this.graphe = new LinkedList[sommet];
+	public Graphe(int nbSommet) {
+		this.nbSommet = nbSommet;
+		this.graphe = new LinkedList[nbSommet];
 
-		for (int i = 0; i < sommet; i++) {
+		for (int i = 0; i < nbSommet; i++) {
 			graphe[i] = new LinkedList<>();
 		}
 	}
@@ -30,7 +30,7 @@ public class Graphe {
 		StringBuilder str = new StringBuilder();
 
 		// boucle sur tous les sommets du graphe
-		for (int i = 0; i < sommet; i++) {
+		for (int i = 0; i < nbSommet; i++) {
 
 			// vérification que le sommet n'est pas vide
 			if (!graphe[i].isEmpty()) {
@@ -46,5 +46,13 @@ public class Graphe {
 		return str;
 	}
 	
+	
+	public int getNbSommet() {
+		return nbSommet;
+	}
+	
+	public LinkedList<Integer>[] getGraphe() {
+		return graphe;
+	}
 	 
 }
