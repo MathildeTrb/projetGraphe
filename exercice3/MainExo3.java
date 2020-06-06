@@ -20,7 +20,6 @@ public class MainExo3 {
 			nbSommets = sc.nextInt();
 		} while (nbSommets < 0 || nbSommets > 1000);
 
-		int test;
 		// limité à 1000 pour éviter d'avoir des erreurs erreurs
 		do {
 			System.out.println("Veuillez saisir le nombre de chemin : ");
@@ -28,31 +27,45 @@ public class MainExo3 {
 		} while (nbChemins < 0 || nbChemins > 50000);
 		// limités à 50000 pour éviter d'avoir des erreurs
 
-		System.out.println("\n\n");
-
+		// Creation du graphe
 		startTime = System.currentTimeMillis();
 		Graphe graph = new Graphe(nbSommets);
 		Random r = new Random();
 		int i = 0;
 		while (i < nbChemins) {
-			int source = r.nextInt(nbSommets); // chox d'un sommet source aléatoire (entre 0 et nbSommet)
+			int source = r.nextInt(nbSommets); // choix d'un sommet source aléatoire (entre 0 et nbSommet)
 			int destination = r.nextInt(nbSommets); // choix d'un sommet destination aléatoire (entre 0 et nbSommet)
-			int ponderation = r.nextInt(100)+1; // choix d'une pondération aléatoire (limité à 100)
+			int ponderation = r.nextInt(100) + 1; // choix d'une pondération aléatoire (limité à 100 et différent de 0)
 			if (graph.ajouterChemin(source, destination, ponderation)) {
 				i++;
 			}
 		}
 		tempsExecution = System.currentTimeMillis() - startTime;
 		System.out.println("[Création graphe] Temps d'execution : " + tempsExecution + "ms");
-		
+
 		System.out.println("\n\n");
 
+		// Affiche du graphe
+		startTime = System.currentTimeMillis();
 		System.out.println(graph.toString());
+		tempsExecution = System.currentTimeMillis() - startTime;
+		System.out.println("[Affichage graphe] Temps d'execution : " + tempsExecution + "ms");
 
 		System.out.println("\n\n");
 
-		PlusCourtChemin.PlusCourtChemin(graph.getMatrice(), 2);
-		
+		// Parcours Dijkstra
+		int source;
+		do {
+			System.out.println("Veuillez saisir le sommet de départ pour Dijkstra : [0 : " + (nbSommets - 1) + "]");
+			source = sc.nextInt();
+		} while (source < 0 || source >= nbSommets);
+
+		startTime = System.currentTimeMillis();
+		PlusCourtChemin.PlusCourtChemin(graph.getMatrice(), source);
+		tempsExecution = System.currentTimeMillis() - startTime;
+		System.out.println("\n[Dijkstra] Temps d'execution : " + tempsExecution + "ms");
+
+		sc.close();
 	}
 
 }

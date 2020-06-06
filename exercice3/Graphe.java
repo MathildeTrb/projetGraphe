@@ -19,36 +19,16 @@ public class Graphe {
 	public boolean ajouterChemin(int source, int destination, int valeur) {
 		if (source != destination) {
 			if (matrice[source][destination] == -1) {
-					// ajout du chemin (orienté)
-					this.matrice[source][destination] = valeur;
-					return true;
+				// ajout du chemin (orienté)
+				this.matrice[source][destination] = valeur;
+				return true;
 			}
 		}
 		return false;
 	}
 
-	int distanceMinimal(boolean[] mst, int[] key) {
-		int minKey = Integer.MAX_VALUE;
-		int vertex = -1;
-		for (int i = 0; i < dimension; i++) {
-			if (mst[i] == false && minKey > key[i]) {
-				minKey = key[i];
-				vertex = i;
-			}
-		}
-		return vertex;
-	}
-
 	public int[][] getMatrice() {
-		return this.matrice;
-	}
-
-	public int getDimension() {
-		return dimension;
-	}
-
-	public int getValue(int source, int dest) {
-		return matrice[source][dest];
+		return matrice;
 	}
 
 	@Override
